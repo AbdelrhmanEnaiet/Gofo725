@@ -22,4 +22,9 @@ public class UserHandler
     {
         return currentUser;
     }
+
+    public void setCurrentUser(User currentUser)
+    {
+        this.currentUser = currentUser;
+    }
 }

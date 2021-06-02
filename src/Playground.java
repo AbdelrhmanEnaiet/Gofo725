@@ -17,6 +17,9 @@ public class Playground
     }
     public void print() //Not yet implemented
     {
-
+        System.out.println("Playground Name: "+ name);
+        System.out.println("ID: "+ pId);
+        System.out.println("Address: "+ address);
+        System.out.println("Team Capacity: "+ maxTeamSize);
     }
 }
