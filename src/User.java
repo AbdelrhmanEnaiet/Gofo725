@@ -46,4 +46,21 @@ public class User
     {
         return accountType;
     }
+    
+    public String getPassword()
+    {
+        return password;
+    }
+    public void setUserName(String userName) {
+		this.userName = userName;
+	}
+    public void setEmail(String email) {
+		this.email = email;
+	}
+    public void setPassword(String password) {
+		this.password = password;
+	}
+    public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
 }

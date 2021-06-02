@@ -42,8 +42,6 @@ public class Main
     			if(login()) {//boolean method (in the Main class) to handle the login process
     				System.out.println("Login is Success");
     				loop=false;
-    			}else {
-    				System.out.println("Wrong password");
     			}
     			break;
     		}
@@ -84,6 +82,7 @@ public class Main
         menu.printFramed("System Starting...");
         System.out.println("Hello "+ currentUser.getUserName()+ ",you Are a "+ currentUser.getAccountType());
         System.out.println("What do you want to do?");
+        
         while (true)
         {
             if (currentUser.getAccountType().equalsIgnoreCase("Owner"))
