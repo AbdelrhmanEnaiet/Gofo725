@@ -28,7 +28,7 @@ public class User
 
     public boolean checkPassword (String pass)
     {
-        if (pass == password) return true;
+        if (pass.equals(password)) return true;
         else return false;
     }
 
