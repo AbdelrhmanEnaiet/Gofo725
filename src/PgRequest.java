@@ -1,18 +1,18 @@
 public class PgRequest
 {
     private int id;
-    private Owner requestCreator;
+    private String requestCreator;
     private Playground reqPlayground;
 
-    public PgRequest(Owner o, Playground p, int id)
+    public PgRequest(int id, String o, Playground p )
     {
+        this.id = id;
         this.requestCreator = o;
         this.reqPlayground = p;
-        this.id = id;
     }
     public String getCreator()
     {
-        return requestCreator.getUserName();
+        return requestCreator;
     }
     public int getId ()
     {

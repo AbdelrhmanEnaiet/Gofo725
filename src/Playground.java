@@ -15,6 +15,29 @@ public class Playground
         maxTeamSize =max;
         pOwner =o;
     }
+    public String getName()
+    {
+        return name;
+    }
+    public int getId()
+    {
+        return pId;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public int getMaxTeamSize()
+    {
+        return maxTeamSize;
+    }
+    public Owner getpOwner()
+    {
+        return pOwner;
+    }
+
     public void print() //Not yet implemented
     {
         System.out.println("Playground Name: "+ name);

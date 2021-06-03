@@ -10,7 +10,7 @@ import com.sun.source.tree.NewClassTree;
 public class UserHandler
 {
     private User currentUser;
-    private ArrayList<User> users=new ArrayList<>(); //changed the array to an ArrayList to have a better control and add new elements easily
+    private ArrayList<User> users=new ArrayList<>();
     private String InnerFile;
     private File file;
     public UserHandler()

@@ -8,10 +8,10 @@ public class User
 
     public User(User user)
     {
-        userName = user.userName;
-        email = user.email;
-        password = user.password;
-        accountType = user.accountType;
+        this.userName = user.userName;
+        this.email = user.email;
+        this.password = user.password;
+        this.accountType = user.accountType;
     }
     //##########################################
     // inherited classes uses static functions
@@ -46,7 +46,7 @@ public class User
     {
         return accountType;
     }
-    
+
     public String getPassword()
     {
         return password;

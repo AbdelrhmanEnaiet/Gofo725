@@ -29,7 +29,7 @@ public class Main
 	    	{
 	    		if(addUser()) {// summon a boolean method (in the Main class) to add user and check if operation is success
 	    			
-	    			System.out.println("Registered Successfuly");
+	    			System.out.println("Registered Successfully");
 	    			loop=false;// turn false to exit the loop if the registration is done
 	    			
 	    		}else {//failed operation is due an existing user with the same email
@@ -56,26 +56,8 @@ public class Main
 	    	}
     }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         newPGsHandler.playgroundHandler =playgroundHandler;
-        //A user Signed in and stored as the current user
-
-        //#############################################
-        //##           temp user for testing         ##
-       // Owner o1 = new Owner("jack","jack@gmail.com","1234","Owner");
-        //userHandler.setCurrentUser(o1);
-        //##        To be removed After Sign in      ##
-        //#############################################
-
         currentUser = userHandler.getCurrentUser(); //for Easy access
 
         //greeting the user and confirming his account type
@@ -101,7 +83,6 @@ public class Main
                         break;
                     }
                     case 2: //View My Requests
-                           //FULLY WORKING pls DO NOT EDIT
                     {
                         newPGsHandler.viewRequestsOf(currentUser.userName);
                         System.out.println("Want To add new playground?");
@@ -129,7 +110,7 @@ public class Main
                 }
 
             }
-            if (currentUser.getAccountType()=="Admin")
+            if (currentUser.getAccountType().equalsIgnoreCase("Admin"))
             {
                 currentUser = null;
                 System.out.println("1- View Reports");
