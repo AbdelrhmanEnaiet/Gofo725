@@ -57,13 +57,14 @@ public class Main
 	    	}
     }
         
-
-        newPGsHandler.playgroundHandler =playgroundHandler;
+    	
+    	System.out.print("it worked");
+        
         currentUser = userHandler.getCurrentUser(); //for Easy access
 
         //greeting the user and confirming his account type
         menu.printFramed("System Starting...");
-        System.out.println("Hello "+ currentUser.getUserName()+ ",you Are a "+ currentUser.getAccountType());
+        System.out.println("Hello "+ currentUser.getUserName()+ ", you Are a "+ currentUser.getAccountType());
         System.out.println("What do you want to do?");
         
         while (true)
@@ -76,6 +77,7 @@ public class Main
                 System.out.println("4- Exit");
 
                 option = scanner.nextInt();
+                
                 switch (option)
                 {
                     case 1: //View My Playgrounds
@@ -85,7 +87,7 @@ public class Main
                     }
                     case 2: //View My Requests
                     {
-                        newPGsHandler.viewRequestsOf(currentUser.userName);
+                        newPGsHandler.viewRequestsOf(currentUser.getUserName());
                         System.out.println("Want To add new playground?");
                         System.out.println("0 = No, 1 = Yes");
                         option = scanner.nextInt();

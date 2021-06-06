@@ -7,11 +7,11 @@ import java.util.Vector;
 
 public class NewPGsHandler
 {
-    public PlaygroundHandler playgroundHandler;
-    public UserHandler userHandler;
+    public  PlaygroundHandler playgroundHandler;
+    private  UserHandler userhandler;
     private Vector<PgRequest> requests = new Vector<PgRequest>();
-    private File file;
-    private String InnerFile;
+    private static File file;
+    private static String InnerFile;
 
     public NewPGsHandler()
     {
@@ -21,6 +21,7 @@ public class NewPGsHandler
         try {
 			if(!(file.createNewFile()))//return true if created a new .txt and false if it already exists
 			{
+				
 				readRequestsFile();
 			}
 			
@@ -37,8 +38,11 @@ public class NewPGsHandler
             Vector<PgRequest> temp = new Vector<PgRequest>();
             for (int i = 0; i < requests.size(); i++)
             {
-                if (requests.get(i).getCreator() == oName)
-                    temp.add(requests.get(i));
+                if (requests.get(i).getCreator().equals(oName))
+                 temp.add(requests.get(i));
+                
+                
+                
             }
             if (temp.size() == 0)
             {
@@ -124,15 +128,20 @@ public class NewPGsHandler
                 String line = fileReader.nextLine();//read the new line in the file
                 
                 String[] txtInFile = line.split(" ");//split the string into a string list
+
                 
-                Owner tempO = (Owner) userHandler.getUserByName(txtInFile[6]);
+                
+                Owner tempO= (Owner) userhandler.getUserByName(txtInFile[6])  ;;
                 Playground tempPG = new Playground(Integer.parseInt(txtInFile[2].trim()),
                                                    txtInFile[3],txtInFile[4], Integer.parseInt(txtInFile[5]),tempO);
                 PgRequest tempReq = new PgRequest(Integer.parseInt(txtInFile[0].trim()),txtInFile[1],tempPG);
                     requests.add(tempReq);//adds loaded user into users arraylist
             }
             fileReader.close();//close the scanner as it is not going to be used again
+            
+            
         }
+        
         catch (FileNotFoundException e)
         {
 

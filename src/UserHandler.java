@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class UserHandler
 {
-    private User currentUser;
-    private ArrayList<User> users=new ArrayList<>();
-    private String InnerFile;
-    private File file;
+    private static User currentUser;
+    public static ArrayList<User> users=new ArrayList<>();
+    private static String InnerFile;
+    private static File file;
     public UserHandler()
     {
         currentUser=null;
@@ -39,16 +39,18 @@ public class UserHandler
     	}
     }
     
-    
+   
 
-    public User getUserByName(String name)
-    { System.out.print("sss");
+    public static User getUserByName(String name)// made it static to return the object without error as it does not have a privilege to edit it 
+    {User temp = null;
+    
         for (int i=0; i<users.size(); i++)
         {
             if ( users.get(i).getUserName().equals(name) )
-                return users.get(i);
+                {temp=(User) users.get(i);
+                 return temp;}
         }
-       
+        
         return null;
     }
 
