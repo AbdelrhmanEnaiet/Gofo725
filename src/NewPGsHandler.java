@@ -15,26 +15,19 @@ public class NewPGsHandler
 
     public NewPGsHandler()
     {
-        //check if there is a file for the desired destination
-        file=new File("GofoData");
-        //make directory if new and set path to credentials
-        if(file.mkdir())
-        {
-            InnerFile=file.getAbsolutePath()+"\\NewPGsRequests.txt";
-            file=new File(InnerFile);//set the new file path to create the credentials
-            try
-            {
-                file.createNewFile();//create the txt file
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else
-            {
-                InnerFile=file.getAbsolutePath()+"\\NewPGsRequests.txt";
-                file=new File(InnerFile);//set the existing file path
-                readRequestsFile();
-            }
+        //set the path to the needed file as it is created on the userHandler constructor
+        file=new File("GofoData\\NewPGsRequests.txt");
+        
+        try {
+			if(!(file.createNewFile()))//return true if created a new .txt and false if it already exists
+			{
+				readRequestsFile();
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         }
 
     public void viewRequestsOf(String oName) //view requests of specific owner
@@ -129,7 +122,9 @@ public class NewPGsHandler
             while(fileReader.hasNextLine())
             {
                 String line = fileReader.nextLine();//read the new line in the file
+                
                 String[] txtInFile = line.split(" ");//split the string into a string list
+                
                 Owner tempO = (Owner) userHandler.getUserByName(txtInFile[6]);
                 Playground tempPG = new Playground(Integer.parseInt(txtInFile[2].trim()),
                                                    txtInFile[3],txtInFile[4], Integer.parseInt(txtInFile[5]),tempO);

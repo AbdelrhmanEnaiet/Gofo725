@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.sun.source.tree.NewClassTree;
+
 
 public class UserHandler
 {
@@ -42,12 +42,13 @@ public class UserHandler
     
 
     public User getUserByName(String name)
-    {
+    { System.out.print("sss");
         for (int i=0; i<users.size(); i++)
         {
             if ( users.get(i).getUserName().equals(name) )
                 return users.get(i);
         }
+       
         return null;
     }
 
@@ -179,6 +180,7 @@ public class UserHandler
 			
 			e.printStackTrace();
 		}
+		
         
          
 

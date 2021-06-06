@@ -7,6 +7,7 @@ public class Main
     public static UserHandler userHandler = new UserHandler();
     public static User currentUser;
     public static NewPGsHandler newPGsHandler = new NewPGsHandler();
+    
     public static PlaygroundHandler playgroundHandler = new PlaygroundHandler();
 
     public static void main(String[] args)
