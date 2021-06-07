@@ -1,5 +1,5 @@
-public class Menu extends Main
-{
+public class Menu extends Main {
+    //testing commit
     //ADD here functions used in main, sorted for each account type
     public boolean registerNewPlayGround() //for owner
     {
@@ -19,8 +19,8 @@ public class Menu extends Main
         System.out.println("How many players in the largest team possible?");
         maxTeamSize = scanner.nextInt();
 
-        Playground temp = new Playground(pId,name,address,maxTeamSize, (Owner) currentUser);
-        if (newPGsHandler.addRequest((Owner)currentUser,temp))
+        Playground temp = new Playground(pId, name, address, maxTeamSize, (Owner) currentUser);
+        if (newPGsHandler.addRequest((Owner) currentUser, temp))
             System.out.println("Done !\nYour Request is sent and waiting approval");
         else
             System.out.println("Error");
@@ -29,15 +29,15 @@ public class Menu extends Main
     }
 
 
-    public void printFramed (String text)   //To print a string in a frame (for titles)
+    public void printFramed(String text)   //To print a string in a frame (for titles)
     {
         int txtLength = text.length();
 
-        for (int i=0; i<txtLength+8;i++)
+        for (int i = 0; i < txtLength + 8; i++)
             System.out.print("#");
         System.out.println();
-        System.out.println("##  " +text+ "  ##");
-        for (int i=0; i<txtLength+8;i++)
+        System.out.println("##  " + text + "  ##");
+        for (int i = 0; i < txtLength + 8; i++)
             System.out.print("#");
         System.out.println();
     }
