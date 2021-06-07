@@ -178,7 +178,7 @@ public static boolean addUser() {
 	pass=scanner.next();
 	aType=scanner.next();
 	
-	if(!userHandler.checkIfExists(email)) {
+	if(!userHandler.checkIfExists(name)) {
 	userHandler.adduser(name, email, pass, aType);
 	
 	return true;}
@@ -192,14 +192,14 @@ public static boolean addUser() {
  */
 public static boolean login() {
 	
-	String email;
+	String userName;
 	String pass;
-	System.out.print("email: ");
-	email=scanner.nextLine();
+	System.out.print("username: ");
+	userName=scanner.nextLine();
 	System.out.print("password: ");
 	pass=scanner.nextLine();
-	if(userHandler.checkIfExists(email)) {
-		if(userHandler.signIn( email, pass)) {
+	if(userHandler.checkIfExists(userName)) {
+		if(userHandler.signIn( userName, pass)) {
 			return true;	
 		}	
 		System.out.println("Wrong password");
