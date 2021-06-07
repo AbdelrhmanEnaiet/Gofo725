@@ -73,11 +73,11 @@ public class UserHandler
      * @param eml the email to be searched for in the user object
      * @return true if the email exist
      */
-    public boolean checkIfExists(String eml) {
+    public boolean checkIfExists(String username) {
     	
     	for (int i=0; i<users.size(); i++)
         {
-            if ( users.get(i).getEmail().equalsIgnoreCase(eml) )
+            if ( users.get(i).getUserName().equals(username) )
                 return true;
         }
     	
@@ -109,12 +109,12 @@ public class UserHandler
      * @param pass user's password
      * @return true if signIn is successful 
      */
-    public boolean signIn(String eml, String pass) {
+    public boolean signIn(String userName, String pass) {
     	
     	
     	for (int i=0; i<users.size(); i++)
         {
-            if ( users.get(i).getEmail().equalsIgnoreCase(eml) && users.get(i).checkPassword(pass) ) {
+            if ( users.get(i).getUserName().equals(userName) && users.get(i).checkPassword(pass) ) {
             	currentUser=users.get(i);
             	return true;
             }
