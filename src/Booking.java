@@ -4,7 +4,7 @@ public class Booking {
     Date startTime;
     int playersCount;
     int forPlayground; // id of the playground that accepted the booking
-    int bookingCreator; // id of the player who created the booking
+    int bookingCreator; // name of the player who created the booking
 
     public Booking(Date startTime, int playersCount, int forPlayground, int bookingCreator) {
         this.startTime = startTime;
