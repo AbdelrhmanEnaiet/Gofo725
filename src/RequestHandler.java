@@ -1,13 +1,86 @@
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 public class RequestHandler {
-    ArrayList<Request> requests;
-    private static File file = new File("GofoData\\Requests.txt");
+    static ArrayList<Request> requests;
+    private static File file;
+    static SimpleDateFormat dateFormater = new SimpleDateFormat("E, MMM dd yyyy HH:mm::ss");
 
-    public RequestHandler() {
+    public RequestHandler() throws IOException {
+        file = new File("GofoData\\PlayerRequests.txt");
+
+        try {
+
+            if (!file.createNewFile()) {
+                readRequestsFile();
+            }
+
+        } catch (IOException e) {
+            System.out.println("error in file opening");
+        }
 
     }
+
+    public static void addRequest(Request request) {
+        requests.add(request);
+    }
+
+    public static void DeleteRequest(Request request) {
+        requests.remove(request);
+    }
+
+    public static void showRequestsByPlayground(int ID) {
+        for (int i = 0; i < requests.size(); i++) {
+            Request curr = requests.get(i);
+            if (curr.getPlaygroundID() == ID)
+                curr.printRequest();
+        }
+
+    }
+
+    public static void readRequestsFile() {
+        try {
+            Scanner fileReader = new Scanner(file);
+            while (fileReader.hasNextLine()) {
+                String line = fileReader.nextLine();
+                String lineTokens[] = line.split(" ");
+                Date date = dateFormater.parse(lineTokens[0]);
+
+
+                Request tempRequest = new Request(date, Integer.parseInt(lineTokens[1].trim()),
+                        Integer.parseInt(lineTokens[2].trim()), lineTokens[3],
+                        Integer.parseInt(lineTokens[4]));
+                requests.add(tempRequest);
+
+
+            }
+        } catch (Exception e) {
+            System.out.println("error in reading the file");
+        }
+    }
+
+    public static void writeRequestsFile(Request request) {
+        try {
+            FileWriter writer = new FileWriter(file, true);
+
+            String date = request.getStartTime().toString();
+
+            String line = date + " " + request.getPlayerCount() + " " + request.getPlaygroundID() + " " +
+                    request.getbookingCreator() + " " + request.getRequestID();
+            writer.write(line);
+            writer.write(System.lineSeparator());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     //writeRequest
 

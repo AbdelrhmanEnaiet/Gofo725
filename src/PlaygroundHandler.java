@@ -1,27 +1,33 @@
 import java.util.Vector;
 
-public class PlaygroundHandler
-{
+public class PlaygroundHandler {
     Vector<Playground> playgrounds = new Vector<Playground>();
-    public boolean addPlayground(Playground playground)
-    {
+
+    public boolean addPlayground(Playground playground) {
         readPlaygroundsFile();
-        if (playgrounds.add(playground))
-        {
+        if (playgrounds.add(playground)) {
             writePlaygroundsFile();
             return true;
-        }
-        else
+        } else
             return false;
     }
     //                  /!\ /!\   not implemented yet   /!\
     //                  /!\ /!\   not implemented yet   /!\
+
+    public void showAllPlaygrounds() {
+
+
+    }
+
     public void writePlaygroundsFile()  //update the playgrounds database
     {
 
+
     }
+
     public void readPlaygroundsFile()   //update the vector from the database
     {
+
 
     }
 }

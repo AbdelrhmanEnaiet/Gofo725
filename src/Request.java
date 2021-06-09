@@ -1,7 +1,45 @@
 import java.util.Date;
 
-public class Request extends Booking {
-    public Request(Date startTime, int playersCount, int forPlayground, int bookingCreator) {
-        super(startTime, playersCount, forPlayground, bookingCreator);
+public class Request {
+    Date startTime;
+    int playersCount;
+    int forPlayground;
+    String bookingCreator;
+    int requestID;
+
+    public Request(Date startTime, int playersCount, int forPlayground, String bookingCreator, int requestID) {
+        this.startTime = startTime;
+        this.playersCount = playersCount;
+        this.forPlayground = forPlayground;
+        this.bookingCreator = bookingCreator;
+        this.requestID = requestID;
     }
+
+    Date getStartTime() {
+        return startTime;
+    }
+
+    int getPlayerCount() {
+        return playersCount;
+    }
+
+    int getPlaygroundID() {
+        return forPlayground;
+    }
+
+    String getbookingCreator() {
+        return bookingCreator;
+    }
+
+    int getRequestID() {
+        return requestID;
+    }
+
+    void printRequest() {
+        System.out.println("Request #" + requestID + " :The player + " + bookingCreator +
+                " request to book playground " + forPlayground +
+                " for " + playersCount + " people at " + startTime.toString());
+    }
+
 }
+
