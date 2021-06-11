@@ -1,3 +1,5 @@
+//import java.util.Calendar;
+//import java.util.Date;
 import java.util.Scanner;
 
 public class Main
@@ -12,10 +14,15 @@ public class Main
 
     public static void main(String[] args)
     {
+        //testing calender
+        //Calendar calendar = Calendar.getInstance();
+        //calendar.setTime(new Date( 2021,5,12));
+        //System.out.println("Today is " + calendar.get(Calendar.DAY_OF_WEEK));
+        //################
+
         int option=0;
         boolean loop=true;
         
-        //This while loop is for testing the register and Login methods 
     	while(loop) {
     	System.out.println("Welcome to Gofo!!");
     	System.out.println("1- Register a new account");
