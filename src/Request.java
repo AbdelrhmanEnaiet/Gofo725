@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Date;
 
 public class Request {
@@ -42,4 +43,13 @@ public class Request {
     }
 
 }
+
+class sortByID implements Comparator<Request> {
+    public int compare(Request a, Request b) {
+
+        return a.getRequestID() - b.getRequestID();
+    }
+
+}
+
 

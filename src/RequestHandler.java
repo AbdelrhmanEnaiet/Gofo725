@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ public class RequestHandler {
 
     public RequestHandler() throws IOException {
         file = new File("GofoData\\PlayerRequests.txt");
+
 
         try {
 
@@ -26,9 +28,28 @@ public class RequestHandler {
 
     }
 
-    public static void addRequest(Request request) {
-        requests.add(request);
+    public static void addRequest(Date startTime, int playersCount, int forPlayground,
+                                  String bookingCreator) {
+        //check to see if request already exists
+        for (int i = 0; i < requests.size(); i++) {
+            Request curr = requests.get(i);
+            if (curr.getStartTime() == startTime && curr.getPlayerCount() == playersCount && curr.getPlaygroundID() == forPlayground
+                    && curr.getbookingCreator() == bookingCreator) {
+                System.out.println("Request already exists");
+                return;
+            }
+        }
+
+
+        Collections.sort(requests, new sortByID());
+
+        int requestID = requests.get(requests.size() - 1).getRequestID() + 1;
+        Request request = new Request(startTime, playersCount, forPlayground, bookingCreator, requestID);
+        writeRequestsFile(request);
+        System.out.println("Request added successfully");
+
     }
+
 
     public static void DeleteRequest(Request request) {
         requests.remove(request);
@@ -64,6 +85,7 @@ public class RequestHandler {
         }
     }
 
+
     public static void writeRequestsFile(Request request) {
         try {
             FileWriter writer = new FileWriter(file, true);
@@ -74,6 +96,7 @@ public class RequestHandler {
                     request.getbookingCreator() + " " + request.getRequestID();
             writer.write(line);
             writer.write(System.lineSeparator());
+
 
         } catch (IOException e) {
             e.printStackTrace();
