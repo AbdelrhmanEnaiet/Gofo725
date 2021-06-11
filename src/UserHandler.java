@@ -13,6 +13,10 @@ public class UserHandler
     public static ArrayList<User> users=new ArrayList<>();
     private static String InnerFile;
     private static File file;
+    /**
+     * create a new file and a text file inside it to save the users data in.
+     * and load any old users if the file already exists
+     */
     public UserHandler()
     {
         currentUser=null;

@@ -19,7 +19,7 @@ public class Menu extends Main {
         System.out.println("How many players in the largest team possible?");
         maxTeamSize = scanner.nextInt();
 
-        Playground temp = new Playground(pId, name, address, maxTeamSize, (Owner) currentUser);
+        Playground temp = new Playground(pId, name, address, maxTeamSize, currentUser.getUserName());
         if (newPGsHandler.addRequest((Owner) currentUser, temp))
             System.out.println("Done !\nYour Request is sent and waiting approval");
         else

@@ -33,7 +33,7 @@ public class NewPGsHandler
 
     public void viewRequestsOf(String oName) //view requests of specific owner
     {
-        if (oName != "")
+        if (oName != " ")
         {
             Vector<PgRequest> temp = new Vector<PgRequest>();
             for (int i = 0; i < requests.size(); i++)
@@ -102,7 +102,7 @@ public class NewPGsHandler
             /*3*/myWriter.write(request.getReqPlayground().getName()+" ");//write into file the playground's name
             /*4*/myWriter.write(request.getReqPlayground().getAddress()+" ");//write into file the playground's Address
             /*5*/myWriter.write(request.getReqPlayground().getMaxTeamSize()+" ");//write into file the playground's team Size
-            /*6*/myWriter.write(request.getReqPlayground().getpOwner().getUserName()+" ");//write into file the playground's owner's name
+            /*6*/myWriter.write(request.getReqPlayground().getpOwner()+" ");//write into file the playground's owner's name
             myWriter.write(System.lineSeparator());// this indicate the end of the line
             //close the file writer to save the data in the file if it is left the data will not be saved
             myWriter.close();
@@ -133,7 +133,7 @@ public class NewPGsHandler
                 
                 Owner tempO= (Owner) userhandler.getUserByName(txtInFile[6])  ;;
                 Playground tempPG = new Playground(Integer.parseInt(txtInFile[2].trim()),
-                                                   txtInFile[3],txtInFile[4], Integer.parseInt(txtInFile[5]),tempO);
+                                                   txtInFile[3],txtInFile[4], Integer.parseInt(txtInFile[5]),tempO.getUserName());
                 PgRequest tempReq = new PgRequest(Integer.parseInt(txtInFile[0].trim()),txtInFile[1],tempPG);
                     requests.add(tempReq);//adds loaded user into users arraylist
             }
