@@ -14,6 +14,10 @@ public class RequestHandler {
     private static File file;
     static SimpleDateFormat dateFormater = new SimpleDateFormat("E/MMM/dd/yyyy/HH");
 
+    /**
+     * Create a new file to store all new requests.
+     * Load all the existing requests if the file already exists.
+     */
     public RequestHandler() {
         file = new File("GofoData\\PlayerRequests.txt");
 
@@ -30,6 +34,13 @@ public class RequestHandler {
 
     }
 
+    /**
+     * Creates a new request and set it's attributes
+     * @param startTime The desired date to book
+     * @param playersCount The number of players that are going to play
+     * @param forPlayground the playground to be booked
+     * @param bookingCreator the creator of the request name
+     */
     public void addRequest(Date startTime, int playersCount, int forPlayground,
                                   String bookingCreator) {
         //check to see if request already exists
@@ -57,6 +68,10 @@ public class RequestHandler {
     }
 
 
+    /**
+     * Accept a booking request
+     * @param id The id of the request
+     */
     public void acceptRequest(int id)
     {
         for (int i=0; i<requests.size();i++)
@@ -71,6 +86,10 @@ public class RequestHandler {
         }
     }
 
+    /**
+     * Display all the requests for a certain playground
+     * @param ID The playground id
+     */
     public void showRequestsByPlayground(int ID) {
         for (int i = 0; i < requests.size(); i++) {
             Request curr = requests.get(i);
@@ -78,7 +97,11 @@ public class RequestHandler {
                 curr.printRequest();
         }
     }
-    //Jun/13/2021/12
+    
+    /**
+     * Display all the requests from a player
+     * @param name the player name
+     */
     public void showRequestsByPlayer(String name)
     {
         for (int i = 0; i < requests.size(); i++) {
@@ -88,6 +111,9 @@ public class RequestHandler {
         }
     }
 
+    /**
+     * Load all the existing requests
+     */
     public static void readRequestsFile() {
         try {
             Scanner fileReader = new Scanner(file);
@@ -110,7 +136,9 @@ public class RequestHandler {
         }
     }
 
-
+    /**
+     * Update the Requests database
+     */
     public static void writeRequestsFile() {
         try {
             FileWriter writer = new FileWriter(file);

@@ -230,14 +230,14 @@ public class Main {
      */
     public static boolean addUser() {
         String name, email, pass, aType;
-        System.out.println("Enter your infromations folllowing this format");
+        System.out.println("Enter your informations following this format");
         System.out.println("username email password type(player/owner)");
         name = scanner.next();
         email = scanner.next();
         pass = scanner.next();
         aType = scanner.next();
 
-        if (!userHandler.checkIfExists(name)) {
+        if (!userHandler.checkIfExists(name) &&(aType.equalsIgnoreCase("player") || aType.equalsIgnoreCase("owner"))) {
             userHandler.adduser(name, email, pass, aType);
 
             return true;
@@ -249,7 +249,7 @@ public class Main {
     /**
      * Method handle the operation of checking the existence and the validation of the user's email and password
      *
-     * @return
+     * @return true if login process is successful. return false if it failed
      */
     public static boolean login() {
 

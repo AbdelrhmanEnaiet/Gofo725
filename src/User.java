@@ -6,8 +6,8 @@ public class User
     protected String password;
     protected String accountType;
     /**
-     * copy a user information to another user
-     * @param user takes a user class object
+     * Copy a user information to another user
+     * @param user Takes a user class object
      */
     public User(User user)
     {
@@ -22,11 +22,11 @@ public class User
     // keep adding functions that way, it's easier and more straightforward
     //###########################################
    /**
-    * create a new user
-    * @param name the user's name
-    * @param e the user's email
-    * @param pass the user's password
-    * @param aType the user's account type
+    * Create a new user
+    * @param name The user's name
+    * @param e The user's email
+    * @param pass The user's password
+    * @param aType The user's account type
     */
     public User(String name, String e, String pass, String aType)
     {
@@ -36,9 +36,9 @@ public class User
         accountType = aType;
     }
     /**
-     * checks if the given password is equal to the user's password
-     * @param pass a string type password
-     * @return true if the password is valid and false if not
+     * Checks if the given password is equal to the user's password
+     * @param pass A string type password
+     * @return True if the password is valid and false if not
      */
     public boolean checkPassword (String pass)
     {
@@ -47,7 +47,7 @@ public class User
     }
     /**
      * 
-     * @return the user's username
+     * @return The user's username
      */
     public String getUserName()
     {
@@ -55,7 +55,7 @@ public class User
     }
     /**
      * 
-     * @return the user's email
+     * @return The user's email
      */
     public String getEmail()
     {
@@ -63,7 +63,7 @@ public class User
     }
     /**
      * 
-     * @return the user's account type
+     * @return The user's account type
      */
     public String getAccountType()
     {
@@ -71,36 +71,36 @@ public class User
     }
     /**
      * 
-     * @return the user's password 
+     * @return The user's password 
      */
     public String getPassword()
     {
         return password;
     }
     /**
-     * set the username of the user
+     * Set the username of the user
      * @param userName user's name
      */
     public void setUserName(String userName) {
 		this.userName = userName;
 	}
     /**
-     * set the user's email
-     * @param email user's email
+     * Set the user's email
+     * @param email User's email
      */
     public void setEmail(String email) {
 		this.email = email;
 	}
     /**
-     * set the user's password
-     * @param password user's new password
+     * Set the user's password
+     * @param password User's new password
      */
     public void setPassword(String password) {
 		this.password = password;
 	}
     /**
-     * set the type of the account
-     * @param accountType the account's type
+     * Set the type of the account
+     * @param accountType The account's type
      */
     public void setAccountType(String accountType) {
 		this.accountType = accountType;

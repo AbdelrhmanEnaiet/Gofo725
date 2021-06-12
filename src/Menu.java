@@ -1,6 +1,10 @@
 public class Menu extends Main {
     //testing commit
     //ADD here functions used in main, sorted for each account type
+	/**
+	 * Inputs the new playground information and request approval from the Admin
+	 * @return True if the registration for the playground completed
+	 */
     public boolean registerNewPlayGround() //for owner
     {
         printFramed("Register a New playground");
@@ -59,7 +63,10 @@ public class Menu extends Main {
         return true;
     }
 
-
+/**
+ * Display a title in a frame
+ * @param text the string to be displayed in a frame
+ */
     public void printFramed(String text)   //To print a string in a frame (for titles)
     {
         int txtLength = text.length();
@@ -72,7 +79,11 @@ public class Menu extends Main {
             System.out.print("#");
         System.out.println();
     }
-
+    /**
+     * Return the day name which corresponds to the day number
+     * @param dayNum The number of the day in the week
+     * @return day's name
+     */
     public String getDayNameFromInt(int dayNum) {
         switch (dayNum) {
             case 1:

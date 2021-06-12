@@ -30,6 +30,8 @@ public class UserHandler
     	file=new File(InnerFile);//set the new file path to create the credentials
     	try {
 			file.createNewFile();//create the txt file
+			adduser("Admin", "Admin@Admin.com", "Admin", "Admin");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}}
@@ -45,6 +47,11 @@ public class UserHandler
     
    
 
+    /**
+     * Return a user class object 
+     * @param name the user' name
+     * @return Return the user if exists
+     */
     public static User getUserByName(String name)// made it static to return the object without error as it does not have a privilege to edit it 
     {User temp = null;
     
@@ -58,11 +65,19 @@ public class UserHandler
         return null;
     }
 
+    /**
+     * 
+     * @return The current user in the handler
+     */
     public User getCurrentUser()
     {
         return currentUser;
     }
 
+    /**
+     * Sets the current user with the wanted user
+     * @param currentUser A user class object
+     */
     public void setCurrentUser(User currentUser)
     {
         this.currentUser = currentUser;

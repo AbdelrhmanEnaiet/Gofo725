@@ -5,13 +5,18 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
 
+
 public class NewPGsHandler {
     public PlaygroundHandler playgroundHandler = new PlaygroundHandler();
     private UserHandler userhandler = new UserHandler();
     private Vector<PgRequest> requests = new Vector<PgRequest>();
     private static File file;
     private static String InnerFile;
-
+    
+    /**
+     * Creates a new file to save the new playgrounds informations in.
+     * And load the playgrounds informations from the file if it already existed
+     */
     public NewPGsHandler() {
         //set the path to the needed file as it is created on the userHandler constructor
         file = new File("GofoData\\NewPGsRequests.txt");
@@ -24,11 +29,16 @@ public class NewPGsHandler {
             }
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Return all the playgrounds that waits approval for a certain Owner.
+     * show all the playgrounds that waits approval if the parameter equalled "all"
+     * @param oName Owner name
+     */
     public void viewRequestsOf(String oName) //view requests of specific owner
     {
         if (oName.equalsIgnoreCase("ALL")) //no specific owner, so show all
@@ -54,7 +64,13 @@ public class NewPGsHandler {
 
         }
     }
-
+    
+    /**
+     * Add a new request to approve a new playground
+     * @param owner Owner class object who own the playground
+     * @param playground The playground to be approved
+     * @return True if the request was made successfully
+     */
     public boolean addRequest(Owner owner, Playground playground) {
         int id = 1;
         for (int i = 0; i < requests.size(); i++) {
@@ -72,7 +88,12 @@ public class NewPGsHandler {
         }
 
     }
-
+    
+    /**
+     * Accept a Request by it's id
+     * @param accId The request id
+     * @return true if the request was accepted
+     */
     public boolean acceptRequest(int accId) {
         if (playgroundHandler.addPlayground(getRequestById(accId).getReqPlayground())) {
             requests.remove(getRequestById(accId));
@@ -80,7 +101,12 @@ public class NewPGsHandler {
             return true;
         } else return false;
     }
-
+    
+    /**
+     * Get the wanted playground by it's id
+     * @param reqId The playground request id
+     * @return The desired playground request
+     */
     public PgRequest getRequestById(int reqId) {
         for (int i = 0; i < requests.size(); i++)
             if (requests.get(i).getId() == reqId)
@@ -89,7 +115,8 @@ public class NewPGsHandler {
     }
 
     /**
-     * Write the requests vector to an external file
+     * Write the requests vector to an external file.
+     * And update the file if there were any changes.
      */
     public void updateRequestsFile() {
         try {

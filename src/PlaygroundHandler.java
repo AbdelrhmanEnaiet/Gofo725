@@ -12,6 +12,10 @@ public class PlaygroundHandler {
     File file;
     static SimpleDateFormat dateFormater = new SimpleDateFormat("E/MMM/dd/yyyy/HH");
 
+    /**
+     * Create a new file to store all data about already made playgrounds, available times, bookings.
+     * Load all the existing playgrounds if the file already exists.
+     */
     public PlaygroundHandler() {  //stores all data about already made playgrounds, available times, bookings
         file = new File("GofoData\\Playgrounds.txt");
 
@@ -26,6 +30,10 @@ public class PlaygroundHandler {
 
     }
 
+    /**
+     * Display all the playgrounds of a certain owner
+     * @param owner Owner name
+     */
     public void showPlaygroundsOfOwner(String owner) {
         for (int i = 0; i < playgrounds.size(); i++) {
             if (playgrounds.get(i).getpOwner().equals(owner))
@@ -33,6 +41,11 @@ public class PlaygroundHandler {
         }
     }
 
+    /**
+     * Add an approved playground to the database
+     * @param playground The approved playground
+     * @return True if added successfully
+     */
     public boolean addPlayground(Playground playground) {
         readPlaygroundsFile();
         if (playgrounds.add(playground)) {
@@ -42,6 +55,9 @@ public class PlaygroundHandler {
             return false;
     }
 
+    /**
+     * Display all approved playgrounds
+     */
     public void showAllPlaygrounds() {
         if (playgrounds.size() == 0) {
             System.out.println("NO playgrounds");
@@ -57,6 +73,11 @@ public class PlaygroundHandler {
         }
     }
 
+    /**
+     * Checks if the playground exists
+     * @param id Playground id
+     * @return True if the playground exists
+     */
     public boolean validate(int id) {
         for (int i = 0; i < playgrounds.size(); i++) {
             if (playgrounds.get(i).getId() == id)
@@ -65,6 +86,9 @@ public class PlaygroundHandler {
         return false;
     }
 
+    /**
+     * @return The the greatest playground id 
+     */
     public int getMaxID() {
         int id = 1;
         for (int i = 0; i < playgrounds.size(); i++) {
@@ -76,6 +100,10 @@ public class PlaygroundHandler {
     }
 
 
+    /**
+     * Update the playgrounds database
+     * 
+     */
     public void writePlaygroundsFile()  //update the playgrounds database
     {
         try {
@@ -111,6 +139,10 @@ public class PlaygroundHandler {
 
     }
 
+    /**
+     * 
+     * @param request A player request for a booking
+     */
     public void bookPlayground(Request request) {
         for (int i = 0; i < playgrounds.size(); i++) {
             if (playgrounds.get(i).getId() == request.getPlaygroundID()) {
@@ -124,6 +156,10 @@ public class PlaygroundHandler {
 
     }
 
+    /**
+     * Display the bookings of a player
+     * @param pName The player name
+     */
     public void getBookingsOf(String pName) {
         for (int i = 0; i < playgrounds.size(); i++) {
             for (int j = 0; j < playgrounds.get(i).getBookingsNumber(); j++) {
@@ -135,6 +171,9 @@ public class PlaygroundHandler {
 
     }
 
+    /**
+     * Load all the existing playgrounds
+     */
     public void readPlaygroundsFile()   //update the vector from the database
     {
         Scanner fileReader = null;
