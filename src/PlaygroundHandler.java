@@ -25,17 +25,15 @@ public class PlaygroundHandler {
 
 
     }
-    public void showPlaygroundsOfOwner(String owner)
-    {
-        for (int i=0;i<playgrounds.size();i++)
-        {
-            if(playgrounds.get(i).getpOwner().equals(owner))
+
+    public void showPlaygroundsOfOwner(String owner) {
+        for (int i = 0; i < playgrounds.size(); i++) {
+            if (playgrounds.get(i).getpOwner().equals(owner))
                 playgrounds.get(i).print();
         }
     }
 
-    public boolean addPlayground(Playground playground)
-    {
+    public boolean addPlayground(Playground playground) {
         readPlaygroundsFile();
         if (playgrounds.add(playground)) {
             writePlaygroundsFile();
@@ -45,12 +43,11 @@ public class PlaygroundHandler {
     }
 
     public void showAllPlaygrounds() {
-        if (playgrounds.size()==0)
-        {
+        if (playgrounds.size() == 0) {
             System.out.println("NO playgrounds");
             return;
         }
-        System.out.println("Printing "+playgrounds.size()+" Playgrounds");
+        System.out.println("Printing " + playgrounds.size() + " Playgrounds");
         for (int i = 0; i < playgrounds.size(); i++) {
             Playground current = playgrounds.get(i);
 
@@ -66,6 +63,16 @@ public class PlaygroundHandler {
                 return true;
         }
         return false;
+    }
+
+    public int getMaxID() {
+        int id = 1;
+        for (int i = 0; i < playgrounds.size(); i++) {
+            if (playgrounds.get(i).getId() > id) {
+                id = playgrounds.get(i).getId();
+            }
+        }
+        return id;
     }
 
 
@@ -103,14 +110,12 @@ public class PlaygroundHandler {
         }
 
     }
-    public void bookPlayground(Request request)
-    {
-        for (int i=0; i<playgrounds.size();i++)
-        {
-            if (playgrounds.get(i).getId() == request.getPlaygroundID())
-            {
+
+    public void bookPlayground(Request request) {
+        for (int i = 0; i < playgrounds.size(); i++) {
+            if (playgrounds.get(i).getId() == request.getPlaygroundID()) {
                 Playground current = playgrounds.get(i);
-                current.addNewBooking(request.getStartTime(),request.getPlayerCount(),current.getId(),request.getbookingCreator());
+                current.addNewBooking(request.getStartTime(), request.getPlayerCount(), current.getId(), request.getbookingCreator());
                 writePlaygroundsFile();
                 break;
             }
@@ -118,20 +123,18 @@ public class PlaygroundHandler {
         }
 
     }
-    public void getBookingsOf(String pName)
-    {
-        for(int i=0; i<playgrounds.size();i++)
-        {
-            for(int j=0;j<playgrounds.get(i).getBookingsNumber();j++)
-            {
-                if (playgrounds.get(i).getBookingWithIndex(j).getbookingCreator().equals(pName))
-                {
+
+    public void getBookingsOf(String pName) {
+        for (int i = 0; i < playgrounds.size(); i++) {
+            for (int j = 0; j < playgrounds.get(i).getBookingsNumber(); j++) {
+                if (playgrounds.get(i).getBookingWithIndex(j).getbookingCreator().equals(pName)) {
                     playgrounds.get(i).getBookingWithIndex(j).print();
                 }
             }
         }
 
     }
+
     public void readPlaygroundsFile()   //update the vector from the database
     {
         Scanner fileReader = null;
@@ -158,7 +161,7 @@ public class PlaygroundHandler {
 
                 for (int i = 0; i < 7; i++) {
                     for (int j = 0; j < 12; j++) {
-                        timeSlots[i][j] = line.charAt(i * 7 + j)-'0';
+                        timeSlots[i][j] = line.charAt(i * 7 + j) - '0';
                     }
                 }
 
@@ -167,10 +170,8 @@ public class PlaygroundHandler {
                 //read the bookings
                 line = fileReader.nextLine();
                 lineTokens = line.split(" ");
-                if (!lineTokens[0].equalsIgnoreCase(""))
-                {
-                    for (int i = 0; i < lineTokens.length; i += 5)
-                    {
+                if (!lineTokens[0].equalsIgnoreCase("")) {
+                    for (int i = 0; i < lineTokens.length; i += 5) {
                         Date date = dateFormater.parse(lineTokens[i]);
                         current.addBooking(date, Integer.parseInt(lineTokens[i + 1]), Integer.parseInt(lineTokens[i + 2]),
                                 lineTokens[i + 3], Integer.parseInt(lineTokens[i + 4]));

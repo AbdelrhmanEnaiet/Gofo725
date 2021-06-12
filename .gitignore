@@ -3,3 +3,5 @@
 *.png
 out
 /bin/
+/GofoData/credentials.txt
+/GofoData/NewPGsRequests.txt

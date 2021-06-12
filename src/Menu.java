@@ -5,13 +5,11 @@ public class Menu extends Main {
     {
         printFramed("Register a New playground");
 
-        int pId;
+        int pId = playgroundHandler.getMaxID() + 1;
         String name;
         String address;
         int maxTeamSize;
 
-        System.out.println("What is the ID of the playground?");
-        pId = scanner.nextInt();
         System.out.println("What is the Name of the playground?");
         name = scanner.next();
         System.out.println("Where is your playground?");
@@ -36,15 +34,13 @@ public class Menu extends Main {
                     slots[i][j] = 1;
         }
 
-        for (int d = 1; d < 8; d++)
-        {
+        for (int d = 1; d < 8; d++) {
             if (d == 6) continue; //exclude friday
             System.out.println("For how long the playground be available at " + getDayNameFromInt(d) + " ?");
             if (d == 1) System.out.println("Enter hours available after 8Am");
             int h = scanner.nextInt() / 2;
             if (h < 0 || h > 5) continue;
-            for (int i = 3; i < 10; i++)
-            {
+            for (int i = 3; i < 10; i++) {
                 if (h > 0)
                     slots[d - 1][i] = 0;
                 else
