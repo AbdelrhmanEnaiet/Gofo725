@@ -74,7 +74,7 @@ public class UserHandler
     
     /**
      *check if the user is registered before and return true if existing 
-     * @param eml the email to be searched for in the user object
+     * @param username the user name to be searched for in the user object
      * @return true if the email exist
      */
     public boolean checkIfExists(String username) {
@@ -109,7 +109,7 @@ public class UserHandler
     }
     /**
      * this method check if the email and password given are valid and set that user as the current user 
-     * @param eml user's email
+     * @param userName user's Name
      * @param pass user's password
      * @return true if signIn is successful 
      */
@@ -173,6 +173,9 @@ public class UserHandler
 	            	 //and check if the loaded user is owner or player to load correctly
 	            	 if(txtInFile[3].equalsIgnoreCase("owner")) {
 	            		 currentUser=new Owner(txtInFile[0],txtInFile[1],txtInFile[2],txtInFile[3]);	 
+	            	 }
+	            	 else if(txtInFile[3].equalsIgnoreCase("admin")) {
+	            		 currentUser=new Admin(txtInFile[0],txtInFile[1],txtInFile[2],txtInFile[3]);
 	            	 }
 	            	 else{currentUser=new Player(txtInFile[0],txtInFile[1],txtInFile[2],txtInFile[3]);}
 	            	 

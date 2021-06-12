@@ -37,7 +37,7 @@ public class Request {
     }
 
     void printRequest() {
-        System.out.println("Request #" + requestID + " :The player + " + bookingCreator +
+        System.out.println("Request #" + requestID + " :The player " + bookingCreator +
                 " request to book playground " + forPlayground +
                 " for " + playersCount + " people at " + startTime.toString());
     }

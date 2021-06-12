@@ -1,6 +1,11 @@
-public class Admin
+public class Admin extends User
 {
-    public static boolean acceptRequest(int id)
+    public Admin(String name, String e, String pass, String aType)
+    {
+        super(name, e, pass, aType);
+    }
+
+    public boolean acceptRequest(int id)
     {System.out.println(id);
         User.newPGsHandler.acceptRequest(id);
         return true;
